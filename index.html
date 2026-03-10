@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>4-A SOHBET Giriş</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h2 {
+      font-size: 40px;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+    }
+    button {
+      background: #ff00cc;
+      border: none;
+      padding: 15px 30px;
+      font-size: 20px;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <h2>4-A SOHBET</h2>
+  <button onclick="googleLogin()">🚀 Google ile Giriş Yap</button>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } 
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCMrb6W9619K83NLFCmymYCTJ7IGe6ajA",
+      authDomain: "asohbet-a2894.firebaseapp.com",
+      projectId: "asohbet-a2894",
+      storageBucket: "asohbet-a2894.appspot.com",
+      messagingSenderId: "587394355293",
+      appId: "1:587394355293:web:ce355543a390a000e53db4",
+      measurementId: "G-4B1JWKNB1S"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    function googleLogin() {
+      signInWithPopup(auth, provider)
+        .then(result => {
+          window.location.href = "chat.html";
+        })
+        .catch(error => {
+          alert("Hata: " + error.message);
+        });
+    }
+  </script>
+</body>
+</html>
+
+
+
